@@ -5,15 +5,6 @@ const express = require('express')
 var port = process.env.PORT || 8080;
 const app = express()
 
-var cors = require('cors');
-
-app.use(
-    cors({
-        credentials: true,
-        origin: true
-    })
-);
-app.options('*', cors());
 
 // mongoose.connect(url, { useNewUrlParser: true })
 // const con = mongoose.connection
