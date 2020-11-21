@@ -5,12 +5,12 @@ const url = "mongodb+srv://mongo:mongo@cluster0.lmmmb.mongodb.net/myDB?retryWrit
 var port = process.env.PORT || 8080;
 const app = express()
 
-mongoose.connect(url, { useNewUrlParser: true })
-const con = mongoose.connection
+// mongoose.connect(url, { useNewUrlParser: true })
+// const con = mongoose.connection
 
-con.on('open', () => {
-    console.log('connected')
-})
+// con.on('open', () => {
+//     console.log('connected')
+// })
 
 app.use(express.json())
 
