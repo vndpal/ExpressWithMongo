@@ -6,11 +6,13 @@ const scoreboardDetailsSchema = new mongoose.Schema({
         required: true
     },
     batsman_id: {
-        type: Number,
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "player_info",
         required: true
     },
     bowler_id: {
-        type: Number,
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "player_info",
         required: true
     },
     extras: {
@@ -18,8 +20,8 @@ const scoreboardDetailsSchema = new mongoose.Schema({
         required: true
     },
     fielder_id: {
-        type: Number,
-        required: true
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "player_info"
     },
     over: {
         type: Number,
@@ -29,44 +31,19 @@ const scoreboardDetailsSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
-    wicket: {
-        type: Number,
+    is_wicket: {
+        type: Boolean,
         required: true
     },
     wicket_type: {
-        type: String,
-        required: true
+        type: String
     },
-    byes_run: {
-        type: Boolean,
-        required: true
+    extra_type: {
+        type: String
     },
-    is_byes: {
-        type: Boolean,
-        required: true
-    },
-    is_legbyes: {
-        type: Boolean,
-        required: true
-    },
-    is_no: {
-        type: Boolean,
-        required: true
-    },
-    is_wide: {
-        type: Boolean,
-        required: true
-    },
-    legbyes_run: {
-        type: Boolean,
-        required: true
-    },
-    no_ball_run: {
-        type: Boolean,
-        required: true
-    },
-    wide_ball_run: {
-        type: Number,
+    match_id: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "match_info",
         required: true
     }
 })

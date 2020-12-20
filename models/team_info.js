@@ -13,6 +13,11 @@ const teamInfoSchema = new mongoose.Schema({
     },
     rating: {
         type: Number
+    },
+    status: {
+        type: String,
+        default: 'I',
+        required: true
     }
 })
 

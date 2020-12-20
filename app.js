@@ -28,6 +28,9 @@ app.use('/tournament', tournamentRouter)
 
 const matchRouter = require('./routers/matchInfo')
 app.use('/match', matchRouter)
+
+const scoreRouter = require('./routers/scoreboard')
+app.use('/score', scoreRouter)
 //end of router
 
 app.listen(port, () => {

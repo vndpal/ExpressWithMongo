@@ -29,13 +29,37 @@ const matchInfoSchema = new mongoose.Schema({
         type: String
     },
     tournamentId: {
-        type: ObjectID,
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "tournament_info",
         required: true
     },
-    matchDate: {
+    startDate: {
         type: Date,
         required: true
+    },
+    endDate: {
+        type: Date
+    },
+    matchStatus: {
+        type: String,
+        required: true
     }
-})
+},
+    {
+        toJSON: { virtuals: true }
+    })
+
+matchInfoSchema.virtual('detailsTeam1', {
+    ref: 'team_info',
+    localField: 'team1',
+    foreignField: 'team_name',
+    justOne: true // for many-to-1 relationships
+});
+matchInfoSchema.virtual('detailsTeam2', {
+    ref: 'team_info',
+    localField: 'team2',
+    foreignField: 'team_name',
+    justOne: true // for many-to-1 relationships
+});
 
 module.exports = mongoose.model('match_info', matchInfoSchema)

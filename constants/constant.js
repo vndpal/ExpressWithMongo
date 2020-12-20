@@ -12,7 +12,19 @@ function playerType() {
     ];
 }
 
+function wicketType() {
+    return [
+        'Bold', 'Catch', 'LBW', 'Stumping', 'Run-Out', 'Obstruct-Field'
+    ];
+}
+
+function extraType() {
+    return [
+        "Wide", "No-Ball", "Leg-Bye", "Bye"
+    ];
+}
+
 module.exports =
 {
-    response, playerType
+    response, playerType, wicketType, extraType
 }

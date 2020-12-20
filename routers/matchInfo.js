@@ -2,13 +2,13 @@ const express = require('express')
 const router = express.Router()
 const MatchInfo = require('../models/match_info')
 const TeamInfo = require('../models/team_info')
-const standResp = require('../constants/response')
+const standResp = require('../constants/constant')
 const TournamentInfo = require('../models/tournament_info')
 
 
 router.get('/', async (req, res) => {
     try {
-        const matchInfo = await MatchInfo.find()
+        const matchInfo = await MatchInfo.find().populate('detailsTeam1 detailsTeam2 tournamentId')
         if (matchInfo.length) {
             const resp = standResp.response(true, 'Data found', matchInfo)
             res.json(resp)
@@ -39,8 +39,9 @@ router.post('/', async (req, res) => {
             const matchInfo = new MatchInfo({
                 team1: team1,
                 team2: team2,
-                matchDate: matchDate,
-                tournamentId: tournamentId
+                startDate: matchDate,
+                tournamentId: tournamentId,
+                matchStatus: "Scheduled"
             })
 
             const a1 = await matchInfo.save()
@@ -50,6 +51,29 @@ router.post('/', async (req, res) => {
         else {
             const resp = standResp.response(false, 'Team 1 or Team 2 or Tour not found', {})
             res.json(resp)
+        }
+
+    }
+    catch (err) {
+        console.log(err)
+        const resp = standResp.response(false, err, {})
+        res.send(resp)
+    }
+})
+
+router.post('/startMatch', async (req, res) => {
+    try {
+        const matchInfo = await MatchInfo.findOne({ _id: req.body._id }).populate('detailsTeam1 detailsTeam2')
+        if (matchInfo) {
+            const updateMatch = await MatchInfo.updateOne({ _id: req.body._id }, { matchStatus: "Started" });
+            const updateTeamStatus = await TeamInfo.updateMany(
+                { $or: [{ team_name: matchInfo.detailsTeam1.team_name }, { team_name: matchInfo.detailsTeam2.team_name }] },
+                { status: "P" },
+                { multi: true });
+            res.json(standResp.response(true, 'Match stared !', updateMatch)); return;
+        }
+        else {
+            res.json(standResp.response(false, 'Match not found !'))
         }
 
     }
