@@ -2,57 +2,51 @@
 This is a API build on nodeJs framework Express which uses database as MongoDB
 
 
-Prerequisite:
--Javascript
+-Prerequisite: Javascript
 
-Software Requirements:
--NodeJs
+-Software Requirements: NodeJs
 
-Topics:
--What is NodeJs and why are its advantages
--
-
-Steps to create new NodsJs API with Express:
+-Steps to create new NodsJs API with Express:
 1. Create a new folder.
 2. Navigate to the folder and run npm init.
 3. Add "npm install express", this will add express in your project.
 4. Create a new file name "app.js". Name can be anything, it will be your entry point to the application.
 5. Import express in your app.js file.
-6. Write below code in order to run the express API:
-    app.listen(8080,()=>{
-      console.log("server started");
-    });
+6. Write below code in order to run the express API:<br />
+    app.listen(8080,()=>{<br />
+        &nbsp;&nbsp;&nbsp; console.log("server started");<br />
+    });<br />
 7. Run using "node app.js" where app.js is your file name.
 
-Routing:
+-Routing:
 1. Import express.Router() in app.js
-2. Now add below code to enable routing:
-   app.use('testRoute',(req,res)=>{
-    console.log('test route called')
-    res.send("Sent the test route response")
-   })
+2. Now add below code to enable routing:<br />
+   app.use('testRoute',(req,res)=>{<br />
+    console.log('test route called')<br />
+        &nbsp;&nbsp;&nbsp; res.send("Sent the test route response")<br />
+   })<br />
 3. Now we can add a separate file and foler for routing.
   a. Create a new folder "routers"
   b. Create a new file with testRoute.js
   c. Import express and Router.
-  d. Add below code:
-      router.get('/',(req,res)=>{
-       res.send("succeeed")
-      })
+  d. Add below code:<br />
+      router.get('/',(req,res)=>{<br />
+          &nbsp;&nbsp;&nbsp;  res.send("succeeed")<br />
+      })<br />
    e. In the end add "module.exports = router" without dobule quotes, its important to export the module.
-   f. In app.js add below code:
-      const newRouter = require('./routers/newRoute')
-      app.use('/newRouter',newRouter)
+   f. In app.js add below code:<br />
+      const newRouter = require('./routers/newRoute')<br />
+      app.use('/newRouter',newRouter)<br />
    g. This will enable the new route.
 
-Authentication and Authorization:
+-Authentication and Authorization:<br />
 https://www.section.io/engineering-education/how-to-build-authentication-api-with-jwt-token-in-nodejs/
 
-Database Connection:
+-Database Connection:<br />
 https://expressjs.com/en/guide/database-integration.html#sql-server
    
   
-Tips and Frequenty used Things:
+-Tips and Frequenty used Things:
 1. Nodemon: its a npm package which will automatically refresh your API when you make any changes.
 2. Cors: If you are getting CORS error then add this in app.js
       const cors = require('cors')
