@@ -8,6 +8,10 @@ Prerequisite:
 Software Requirements:
 -NodeJs
 
+Topics:
+-What is NodeJs and why are its advantages
+-
+
 Steps to create new NodsJs API with Express:
 1. Create a new folder.
 2. Navigate to the folder and run npm init.
@@ -40,7 +44,21 @@ Routing:
       const newRouter = require('./routers/newRoute')
       app.use('/newRouter',newRouter)
    g. This will enable the new route.
+
+Authentication and Authorization:
+https://www.section.io/engineering-education/how-to-build-authentication-api-with-jwt-token-in-nodejs/
+
+Database Connection:
+https://expressjs.com/en/guide/database-integration.html#sql-server
    
+  
+Tips and Frequenty used Things:
+1. Nodemon: its a npm package which will automatically refresh your API when you make any changes.
+2. Cors: If you are getting CORS error then add this in app.js
+      const cors = require('cors')
+      app.use(cors())
+3. JSON: If you are going to deal with JSON, which you will, use below:
+      app.use(express.json())
 
 
 
