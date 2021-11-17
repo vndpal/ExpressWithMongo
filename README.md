@@ -6,6 +6,13 @@ This is a API build on nodeJs framework Express which uses database as MongoDB
 
 -Software Requirements: NodeJs
 
+-Why NodeJs <br />
+    -Single Threaded Environment <br />
+    -IO Intensive <br />
+    -Real Time applications <br />
+    -Not recommeded for high computive operations <br />
+
+
 -Steps to create new NodsJs API with Express:
 1. Create a new folder.
 2. Navigate to the folder and run npm init.
@@ -38,6 +45,10 @@ This is a API build on nodeJs framework Express which uses database as MongoDB
       const newRouter = require('./routers/newRoute')<br />
       app.use('/newRouter',newRouter)<br />
    g. This will enable the new route.
+
+-Debugging <br />
+    -Open Run and Debug option in vscode.<br />
+    -Choose NodeJs as Debugging choice.<br />
 
 -Authentication and Authorization:<br />
 https://www.section.io/engineering-education/how-to-build-authentication-api-with-jwt-token-in-nodejs/
