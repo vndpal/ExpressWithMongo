@@ -10,6 +10,8 @@ This is a API build on nodeJs framework Express which uses database as MongoDB
     -Single Threaded Environment <br />
     -IO Intensive <br />
     -Real Time applications <br />
+    -Provide flexibility for  NOSQL <br />
+    -Have active communiity and lots of useful Packages <br />
     -Not recommeded for high computive operations <br />
 
 
